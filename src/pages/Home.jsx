@@ -13,16 +13,20 @@ const Home = () => {
     name: 'пулярности',
     sortProperty: 'raiting',
   });
-  console.log(sortType, categoryID);
-
+  //console.log(sortType, categoryID);
+  //console.log(sortType.sortProperty);
   React.useEffect(() => {
-    setIsLoading(true);
-    fetch(
-      `https://61bdf7c82a1dd4001708a1cf.mockapi.io/items?${
-      categoryID > 0 ? `category=${categoryID}` : ''
-   }&sortBy=${sortType.sortProperty}&order=desc`,
-    )
+    const order = sortType.sortProperty.includes('-') ? 'desc' : 'asc';
+    console.log(order)
+    const sortBy = sortType.sortProperty.replace('-', '');
+    console.log(sortBy)
+    const category = categoryID > 0 ? `category=${categoryID}` : '';
 
+    setIsLoading(true);
+
+    fetch(
+      `https://61bdf7c82a1dd4001708a1cf.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order})}`,
+    )
       .then((res) => {
         return res.json();
       })

@@ -1,16 +1,16 @@
 import React from 'react';
 
-const PizzaBlock = ({ title, price, imageUrl, sizes, types }) => {
+const PizzaBlock = ({ name, price, imageUrl, sizes, types }) => {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
   const typeNames = ['тонкое', 'традиционное'];
 
   return (
-    <div className="pizza-block-wrapper">
+    <div className="pizza-block-wrapper">  
       <div class="pizza-block">
         <img class="pizza-block__image" src={imageUrl} alt="Pizza" />
-        <h4 class="pizza-block__title">{title}</h4>
+        <h4 class="pizza-block__title">{name}</h4>
         <div class="pizza-block__selector">
           <ul>
             {types.map((type) => (
